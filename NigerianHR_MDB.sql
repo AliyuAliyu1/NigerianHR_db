@@ -26,8 +26,8 @@ CREATE TABLE employees (
   age  int DEFAULT NULL,
   contact_add  varchar(255) DEFAULT NULL,
   emp_email  varchar(255) DEFAULT NULL,
-  full_time  varchar(255) DEFAULT NULL,
-  part_time  varchar(255) DEFAULT NULL,
+  full_time  boolean DEFAULT NULL,
+  part_time  boolean DEFAULT NULL,
   
   CONSTRAINT fk_training_sessions FOREIGN KEY(training_sessions_id) REFERENCES training_sessions(training_sessions_id),
   CONSTRAINT fk_multiple_leaves FOREIGN KEY(multiple_leaves_id) REFERENCES multiple_leaves(multiple_leaves_id),
