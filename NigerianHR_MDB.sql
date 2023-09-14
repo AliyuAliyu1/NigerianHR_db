@@ -194,26 +194,26 @@ ALTER TABLE "fk_employees_id" ADD FOREIGN KEY("employees_id") REFERENCES "employ
  ALTER TABLE "fk_multiple_leaves" ADD FOREIGN KEY("multiple_leaves_id") REFERENCES "multiple_leaves" ("multiple_leaves_id"),
   ALTER TABLE "fk_job_positions" ADD FOREIGN KEY("job_positions_id") REFERENCES "job_positions" ("job_positions_id"),
 
--- ALTER TABLE "Employees" ADD FOREIGN KEY ("id") REFERENCES "JobPositions" ("id");
+-- ALTER TABLE "employees" ADD FOREIGN KEY ("employees_id") REFERENCES "job_positions" ("job_positions_id");
 
 -- ALTER TABLE "JobPositions" ADD FOREIGN KEY ("id") REFERENCES "Employees" ("JobPositionsID");
 
 -- ALTER TABLE "pay_roll" ADD FOREIGN KEY ("hourly_rate") REFERENCES "Employees" ("part_time");
 
--- ALTER TABLE "Employees" ADD FOREIGN KEY ("part_time") REFERENCES "pay_roll" ("id");
+-- ALTER TABLE "employees" ADD FOREIGN KEY ("part_time") REFERENCES "pay_roll" ("id");
 
 -- ALTER TABLE "pay_roll" ADD FOREIGN KEY ("monthly_rate") REFERENCES "Employees" ("full_time");
 
--- ALTER TABLE "Employees" ADD FOREIGN KEY ("full_time") REFERENCES "pay_roll" ("id");
+-- ALTER TABLE "employees" ADD FOREIGN KEY ("full_time") REFERENCES "pay_roll" ("id");
 
--- ALTER TABLE "Activities" ADD FOREIGN KEY ("multiple_leaves") REFERENCES "Employees" ("id");
+-- ALTER TABLE "activities" ADD FOREIGN KEY ("multiple_leaves") REFERENCES "Employees" ("id");
 
--- ALTER TABLE "Activities" ADD FOREIGN KEY ("training_sessions") REFERENCES "Employees" ("id");
+-- ALTER TABLE "activities" ADD FOREIGN KEY ("training_sessions") REFERENCES "employees" ("id");
 
--- ALTER TABLE "Activities" ADD FOREIGN KEY ("multiple_leaves") REFERENCES "Employees" ("multiple_leavesID");
+-- ALTER TABLE "activities" ADD FOREIGN KEY ("multiple_leaves") REFERENCES "employees" ("multiple_leavesID");
 
--- ALTER TABLE "Employees" ADD FOREIGN KEY ("training_sessionsID") REFERENCES "Activities" ("training_sessions");
+-- ALTER TABLE "employees" ADD FOREIGN KEY ("training_sessionsID") REFERENCES "activities" ("training_sessions");
 
--- ALTER TABLE "Attendance" ADD FOREIGN KEY ("id") REFERENCES "Employees" ("id");
+-- ALTER TABLE "ettendance" ADD FOREIGN KEY ("id") REFERENCES "employees" ("id");
 
--- ALTER TABLE "Employees" ADD FOREIGN KEY ("id") REFERENCES "Attendance" ("EmployeeID");
+-- ALTER TABLE "employees" ADD FOREIGN KEY ("id") REFERENCES "attendance" ("employeeID");
