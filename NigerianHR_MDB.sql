@@ -1,22 +1,3 @@
-DROP TABLE IF EXISTS departments CASCADE;
-
-CREATE TABLE departments (
-  departments_id SERIAL PRIMARY KEY,
-   orders  varchar(255) DEFAULT NULL,
-   marketing  varchar(255) DEFAULT NULL,
-   accounting  varchar(255) DEFAULT NULL,
-   administration  varchar(255) DEFAULT NULL,
-
-  
-   created_at TIMESTAMP DEFAULT NOW()
-);
-
-INSERT INTO departments
-(orders, marketing,accounting,administration ) 
-VALUES
- ('Sales', 'Advertising', 'Finance', 'HR'),
-  ('Shipping', 'Digital Marketing', 'Audit', 'Legal'),
-  ('Customer Service', 'Public Relations', 'Taxation', 'Facilities');
 
 DROP TABLE IF EXISTS employees CASCADE;
 
@@ -29,6 +10,13 @@ CREATE TABLE employees (
   emp_email  varchar(255) DEFAULT NULL,
   full_time  boolean DEFAULT NULL,
   part_time  boolean DEFAULT NULL,
+
+training_sessions_id int,
+multiple_leaves_id int,
+job_positions_id int, 
+  CONSTRAINT training_sessions_fk FOREIGN KEY (training_sessions_id) REFERENCES training_sessions(training_sessions_id),
+  CONSTRAINT multiple_leaves_fk FOREIGN KEY (multiple_leaves_id) REFERENCES multiple_leaves(multiple_leaves_id),
+  CONSTRAINT job_positions_fk FOREIGN KEY (job_positions_id) REFERENCES job_positions(job_positions_id),
   
 
  
@@ -41,6 +29,30 @@ VALUES
   ('John', 'Doe', 30, '123 Main St', 'john@example.com', TRUE, TRUE),
   ('Jane', 'Smith', 25, '456 Elm St', 'jane@example.com', TRUE, FALSE),
   ('Bob', 'Johnson', 35, '789 Oak St', 'bob@example.com', FALSE, TRUE);
+
+
+  DROP TABLE IF EXISTS departments CASCADE;
+
+CREATE TABLE departments (
+  departments_id SERIAL PRIMARY KEY,
+   orders  varchar(255) DEFAULT NULL,
+   marketing  varchar(255) DEFAULT NULL,
+   accounting  varchar(255) DEFAULT NULL,
+   administration  varchar(255) DEFAULT NULL,
+   employeeID int,
+ CONSTRAINT employee_fk FOREIGN KEY(employeeID) REFERENCES employees(employees_id),
+
+
+  
+   created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO departments
+(orders, marketing,accounting,administration ) 
+VALUES
+ ('Sales', 'Advertising', 'Finance', 'HR'),
+  ('Shipping', 'Digital Marketing', 'Audit', 'Legal'),
+  ('Customer Service', 'Public Relations', 'Taxation', 'Facilities');
 
 DROP TABLE IF EXISTS job_positions CASCADE;
 
@@ -88,6 +100,8 @@ CREATE TABLE activities (
   attendance boolean DEFAULT NULL,
   multiple_leaves int DEFAULT NULL,
   training_sessions int DEFAULT NULL,
+   employeeID int,
+ CONSTRAINT employee_fk FOREIGN KEY(employeeID) REFERENCES employees(employees_id),
 
   
    created_at TIMESTAMP DEFAULT NOW()
@@ -104,14 +118,15 @@ DROP TABLE IF EXISTS attendance CASCADE;
 
 CREATE TABLE attendance (
   attendance_id SERIAL PRIMARY KEY,
-  monday int DEFAULT NULL,
-  tuesday int DEFAULT NULL,
-  wednesday int DEFAULT NULL,
-  thursday int DEFAULT NULL,
-  friday int DEFAULT NULL,
-  saturday int DEFAULT NULL,
-  sunday int DEFAULT NULL,
-
+  monday boolean DEFAULT NULL,
+  tuesday boolean DEFAULT NULL,
+  wednesday boolean DEFAULT NULL,
+  thursday boolean DEFAULT NULL,
+  friday boolean DEFAULT NULL,
+  saturday boolean DEFAULT NULL,
+  sunday boolean DEFAULT NULL,
+  employeeID int,
+ CONSTRAINT employee_fk FOREIGN KEY(employeeID) REFERENCES employees(employees_id),
 
  
    created_at TIMESTAMP DEFAULT NOW()
@@ -124,6 +139,16 @@ VALUES
 (FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE),
 (TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE);
 
+
+
+
+
+
+
+
+-- ALTER TABLE employees ADD FOREIGN KEY (training_sessionsID) REFERENCES training_sessions(training_sessions_id);
+-- ALTER TABLE employees ADD FOREIGN KEY (multiple_leavesID) REFERENCES multiple_leaves(multiple_leaves_id);
+-- ALTER TABLE employees ADD FOREIGN KEY (job_positions_id) REFERENCES job_positions(job_positions_id);
 
 
 
