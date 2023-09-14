@@ -11,12 +11,12 @@ CREATE TABLE employees (
   full_time  boolean DEFAULT NULL,
   part_time  boolean DEFAULT NULL,
 
-training_sessions_id int,
-multiple_leaves_id int,
-job_positions_id int, 
-  CONSTRAINT training_sessions_fk FOREIGN KEY (training_sessions_id) REFERENCES training_sessions(training_sessions_id),
-  CONSTRAINT multiple_leaves_fk FOREIGN KEY (multiple_leaves_id) REFERENCES multiple_leaves(multiple_leaves_id),
-  CONSTRAINT job_positions_fk FOREIGN KEY (job_positions_id) REFERENCES job_positions(job_positions_id),
+training_sessionsID int,
+multiple_leavesID int,
+job_positionsID int, 
+  CONSTRAINT training_sessions_fk FOREIGN KEY (training_sessionsID) REFERENCES training_sessions(training_sessionsID),
+  CONSTRAINT multiple_leaves_fk FOREIGN KEY (multiple_leavesID) REFERENCES multiple_leaves(multiple_leavesID),
+  CONSTRAINT job_positions_fk FOREIGN KEY (job_positionsID) REFERENCES job_positions(job_positionsID),
   
 
  

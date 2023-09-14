@@ -1,3 +1,20 @@
+CREATE TABLE "employees" (
+  "employees_id" integer PRIMARY KEY,
+  "fname" varchar,
+  "lname" varchar,
+  "age" integer,
+  "contact_add" varchar,
+  "emp_email" varchar,
+  "full_time" varchar,
+  "part_time" varchar,
+  "training_sessions" int,
+  "multiple_leaves" int,
+  "job_positions" int,
+  "training_sessionsID" "int(Foreign key, refrences training_sessions)",
+  "multiple_leavesID" "int(Foreign key, refrences multiple_leaves)",
+  "job_positionsID" "int(Foreign key, refrences job_positions)",
+  "created_at" timestamp
+);
 CREATE TABLE "departments" (
   "departments_id" integer PRIMARY KEY,
   "orders" varchar,
@@ -8,20 +25,6 @@ CREATE TABLE "departments" (
   "created_at" timestamp
 );
 
-CREATE TABLE "employees" (
-  "employees_id" integer PRIMARY KEY,
-  "fname" varchar,
-  "lname" varchar,
-  "age" integer,
-  "contact_add" varchar,
-  "emp_email" varchar,
-  "full_time" varchar,
-  "part_time" varchar,
-  "training_sessionsID" "int(Foreign key, refrences training_sessions)",
-  "multiple_leavesID" "int(Foreign key, refrences multiple_leaves)",
-  "job_positionsID" "int(Foreign key, refrences job_positions)",
-  "created_at" timestamp
-);
 
 CREATE TABLE "job_positions" (
   "job_positions_id" integer PRIMARY KEY,
