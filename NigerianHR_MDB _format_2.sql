@@ -126,6 +126,7 @@ VALUES
 --  ALTER TABLE "fk_multiple_leaves" ADD FOREIGN KEY("multiple_leaves_id") REFERENCES "multiple_leaves" ("multiple_leaves_id"),
 --   ALTER TABLE "fk_job_positions" ADD FOREIGN KEY("job_positions_id") REFERENCES "job_positions" ("job_positions_id"),
 
+
 ALTER TABLE employees
 ADD CONSTRAINT fk_employees_id FOREIGN KEY (employees_id)
 REFERENCES employees(employees_id);
@@ -138,3 +139,16 @@ REFERENCES multiple_leaves(multiple_leaves_id);
 ALTER TABLE employees
 ADD CONSTRAINT fk_job_positions FOREIGN KEY (job_positions_id)
 REFERENCES job_positions(job_positions_id);
+
+
+ALTER TABLE departments
+ADD CONSTRAINT fk_employees_id FOREIGN KEY (employees_id)
+REFERENCES employees(employees_id);
+
+ALTER TABLE activities
+ADD CONSTRAINT fk_employees_id FOREIGN KEY (employees_id)
+REFERENCES employees(employees_id);
+
+ALTER TABLE attendance
+ADD CONSTRAINT fk_employees_id FOREIGN KEY (employees_id)
+REFERENCES employees(employees_id);
