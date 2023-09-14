@@ -189,7 +189,7 @@ VALUES
 
 -- ALTER TABLE "employees" ADD FOREIGN KEY ("employees_id") REFERENCES "departments" ("departments_id");
 
-ALTER TABLE "fk_supplier" ADD FOREIGN KEY("employees_id") REFERENCES "employees" ("employees_id");
+ALTER TABLE "fk_employees_id" ADD FOREIGN KEY("employees_id") REFERENCES "employees" ("employees_id");
  ALTER TABLE "fk_training_sessions" ADD FOREIGN KEY("training_sessions_id") REFERENCES "training_sessions" ("training_sessions_id"),
  ALTER TABLE "fk_multiple_leaves" ADD FOREIGN KEY("multiple_leaves_id") REFERENCES "multiple_leaves" ("multiple_leaves_id"),
   ALTER TABLE "fk_job_positions" ADD FOREIGN KEY("job_positions_id") REFERENCES "job_positions" ("job_positions_id"),
