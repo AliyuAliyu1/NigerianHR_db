@@ -1,1 +1,0 @@
-![Alt text](NigerianHR_MDB.png)
