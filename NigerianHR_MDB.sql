@@ -11,12 +11,12 @@ CREATE TABLE employees (
   full_time  boolean DEFAULT NULL,
   part_time  boolean DEFAULT NULL,
 
-training_sessionsID int,
-multiple_leavesID int,
-job_positionsID int, 
-  CONSTRAINT training_sessions_fk FOREIGN KEY (training_sessionsID) REFERENCES training_sessions(training_sessionsID),
-  CONSTRAINT multiple_leaves_fk FOREIGN KEY (multiple_leavesID) REFERENCES multiple_leaves(multiple_leavesID),
-  CONSTRAINT job_positions_fk FOREIGN KEY (job_positionsID) REFERENCES job_positions(job_positionsID),
+training_sessions_id int,
+multiple_leaves_id int,
+job_positions_id int, 
+  CONSTRAINT training_sessions_fk FOREIGN KEY (training_sessions_id) REFERENCES training_sessions(training_sessions_id),
+  CONSTRAINT multiple_leaves_fk FOREIGN KEY (multiple_leaves_id) REFERENCES multiple_leaves(multiple_leaves_id),
+  CONSTRAINT job_positions_fk FOREIGN KEY (job_positions_id) REFERENCES job_positions(job_positions_id),
   
 
  
@@ -138,44 +138,3 @@ VALUES
 (TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE),
 (FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE),
 (TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE);
-
-
-
-
-
-
-
-
--- ALTER TABLE employees ADD FOREIGN KEY (training_sessionsID) REFERENCES training_sessions(training_sessions_id);
--- ALTER TABLE employees ADD FOREIGN KEY (multiple_leavesID) REFERENCES multiple_leaves(multiple_leaves_id);
--- ALTER TABLE employees ADD FOREIGN KEY (job_positions_id) REFERENCES job_positions(job_positions_id);
-
-
-
-ALTER TABLE "employees" ADD FOREIGN KEY ("employees_id") REFERENCES "departments" ("departments_id");
-
-ALTER TABLE "employees" ADD FOREIGN KEY ("employees_id") REFERENCES "job_positions" ("job_positions_id");
-
-ALTER TABLE "job_positions" ADD FOREIGN KEY ("job_positions_id") REFERENCES "employees" ("job_positionsID");
-
-ALTER TABLE "pay_roll" ADD FOREIGN KEY ("hourly_rate") REFERENCES "employees" ("part_time");
-
-ALTER TABLE "employees" ADD FOREIGN KEY ("part_time") REFERENCES "pay_roll" ("pay_roll_id");
-
-ALTER TABLE "pay_roll" ADD FOREIGN KEY ("monthly_rate") REFERENCES "employees" ("full_time");
-
-ALTER TABLE "employees" ADD FOREIGN KEY ("full_time") REFERENCES "pay_roll" ("pay_roll_id");
-
-ALTER TABLE "activities" ADD FOREIGN KEY ("multiple_leaves") REFERENCES "employees" ("employees_id");
-
-ALTER TABLE "activities" ADD FOREIGN KEY ("training_sessions") REFERENCES "employees" ("employees_id");
-
-ALTER TABLE "activities" ADD FOREIGN KEY ("multiple_leaves") REFERENCES "employees" ("multiple_leavesID");
-
-ALTER TABLE "employees" ADD FOREIGN KEY ("training_sessionsID") REFERENCES "activities" ("training_sessions");
-
-ALTER TABLE "attendance" ADD FOREIGN KEY ("attendance_id") REFERENCES "employees" ("employees_id");
-
-ALTER TABLE "employees" ADD FOREIGN KEY ("employees_id") REFERENCES "attendance" ("employeeID");
-
-ALTER TABLE "departments" ADD FOREIGN KEY ("employeeID") REFERENCES "employees" ("employees_id");
