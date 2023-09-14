@@ -41,7 +41,7 @@ CREATE TABLE "pay_roll" (
 
 CREATE TABLE "activities" (
   "activities_id" integer PRIMARY KEY,
-  "attendance" bo0lean,
+  "attendance" boolean,
   "employeeID" "int(Foreign key, refrences employees)",
   "multiple_leaves" int,
   "training_sessions" int,
